@@ -3,4 +3,6 @@ project(Learning_MultiplayerGameProgramming)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(${PROJECT_NAME} main.cpp)
+include_directories(include)
+
+add_executable(${PROJECT_NAME} src/main.cpp src/SocketAddress.cpp include/SocketAddress.hpp)
