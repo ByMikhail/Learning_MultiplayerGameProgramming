@@ -12,7 +12,6 @@ class SocketAddress
 public:
     SocketAddress(uint32_t address, uint16_t port);
     SocketAddress(const sockaddr& sockaddr);
-    size_t GetSize() const;
 private:
     sockaddr m_SockAddr;
     sockaddr_in* GetAsSockAddrIn();

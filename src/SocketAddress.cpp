@@ -6,6 +6,8 @@
 
 SocketAddress::SocketAddress(uint32_t address, uint16_t port)
 {
+    m_SockAddr = {};
+
     GetAsSockAddrIn()->sin_family = AF_INET;
     GetAsSockAddrIn()->sin_addr.S_un.S_addr = htonl(address);
     GetAsSockAddrIn()->sin_port = htons(port);
@@ -13,12 +15,7 @@ SocketAddress::SocketAddress(uint32_t address, uint16_t port)
 
 SocketAddress::SocketAddress(const sockaddr &sockaddr)
 {
-    memcpy(&m_SockAddr, &sockaddr, GetSize());
-}
-
-size_t SocketAddress::GetSize() const
-{
-    return sizeof(sockaddr);
+    m_SockAddr = sockaddr;
 }
 
 sockaddr_in * SocketAddress::GetAsSockAddrIn()
